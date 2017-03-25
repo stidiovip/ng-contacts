@@ -1,0 +1,59 @@
+<br>
+<div class="container">
+  <h1> Contacts manager web app </h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-16">
+      <h3>List of contacts</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <td><strong>#</strong></td>
+          <td><strong>Name</strong></td>
+          <td><strong>Adress</strong></td>
+          <td><strong>Phone</strong></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id}}</td>
+          <td>{{ contact.name}}</td>
+          <td>{{ contact.address}}</td>
+          <td>{{ contact.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-6 new-contact">
+      <h3>Add new one </h3>
+      <form name="new-contact-form">
+
+        <div class="form-group row">
+          <label for="name" class="col-2 col-form-label">Name</label>
+          <div class="col-6">
+            <input class="form-control" type="text" id="name" name = "name" [(ngModel)]="newContactInfo.name">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="name" class="col-2 col-form-label">Adress</label>
+          <div class="col-6">
+            <input class="form-control" type="text" id="address" name = "address" [(ngModel)]="newContactInfo.address">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="name" class="col-2 col-form-label">Phone</label>
+          <div class="col-6">
+            <input class="form-control" type="text" id="phone" name = "phone" [(ngModel)]="newContactInfo.phone">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" (click) = "addContact()"> Add </button>
+
+      </form>
+    </div>
+  </div>
+</div>
