@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Contact } from './contact';
+import { Contact } from './contacts/contact.model';
+import {ContactsService} from "./contacts.service";
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,10 @@ export class AppComponent {
     phone: ""
   };
 
-  public constructor (){
-    this.contacts.push(new Contact(1, "Tidiane SIDIBE", "Nantes, France", "06000001"));
-    this.contacts.push(new Contact(2, "Jean-Brice BOUTIN", "Nantes, France", "06000002"));
-    this.contacts.push(new Contact(3, "Marianne POURRE", "Rennes, France", "06000003"));
+  public constructor (private contactsService: ContactsService){
+    this.contactsService.getContacts().subscribe( contacts => {
+      this.contacts = contacts
+    });
   }
 
   /**
