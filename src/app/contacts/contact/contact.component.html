@@ -1,0 +1,13 @@
+<div class="card card-block">
+
+  <h4 class="card-title">{{ oneContact.firstname}} {{ oneContact.lastname | uppercase }}</h4>
+
+  <button type="button" class="btn btn-sm btn-default" aria-label="Left Align" (click)="details()">
+    Détails
+  </button>
+
+  <button type="button" class="btn btn-sm btn-danger" aria-label="Left Align" (click)="delete()">
+    Supprimer
+  </button>
+
+</div>

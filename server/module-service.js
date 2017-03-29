@@ -6,10 +6,11 @@ const ModuleData = require('./module-data');
 class ModuleService {
 
     /**
-     * Default contructor
+     * The contructor
+     * @param {ModuleData} mData : the data management module
      */
-    constructor ( ){
-        this.mData = new ModuleData();
+    constructor ( mData ){
+        this.mData = mData;
     }
 
     /**

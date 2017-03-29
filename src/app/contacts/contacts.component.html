@@ -1,0 +1,76 @@
+<div class="container">
+  <h1> Contacts manager web app </h1>
+  <hr>
+
+  <div class="row">
+
+    <!-- The list of contacts -->
+
+    <div class="col-sm-3">
+      <h5>List of contacts </h5>
+
+      <!-- Filtering contacts -->
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input class="form-control" type="text" id="filter" name = "filter" [(ngModel)]="filter" placeholder="Search a contact here ...">
+        </div>
+      </div>
+
+      <!-- Displaying the list of contacts -->
+      <div class="row" *ngFor="let contact of contacts | search : filter">
+        <!-- Displaying one contact -->
+        <app-contact [oneContact] = "contact" (onDeleteEvent)="onDelete($event)" (onDetailsEvent)="onDetails($event)"></app-contact>
+      </div>
+    </div>
+
+    <!-- details of the selected contact -->
+    <app-contact-details *ngIf="showDetails" [contact]="contact" (onCloseEvent)="onCloseDetails()"></app-contact-details>
+
+    <!-- The new contact block -->
+    <div class="col-sm-5 new-contact">
+      <h5>Add new one </h5>
+      <form name="new-contact-form">
+
+        <div class="form-group row">
+          <label for="firstname" class="col-sm-2 col-form-label"><strong>Firstname</strong></label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text" id="firstname" name = "firstname" [(ngModel)]="newContactInfo.firstname">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="lastname" class="col-sm-2 col-form-label"><strong>Lastname</strong></label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text" id="lastname" name = "lastname" [(ngModel)]="newContactInfo.lastname">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="address" class="col-sm-2 col-form-label"><strong>Adress</strong></label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text" id="address" name = "address" [(ngModel)]="newContactInfo.address">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label"><strong>Email</strong></label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text" id="email" name = "email" [(ngModel)]="newContactInfo.email">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="phone" class="col-sm-2 col-form-label"><strong>Phone</strong></label>
+          <div class="col-sm-6">
+            <input class="form-control" type="text" id="phone" name = "phone" [(ngModel)]="newContactInfo.phone">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" (click) = "addContact()"> <strong>Add</strong> </button>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>

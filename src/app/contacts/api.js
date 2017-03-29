@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const ModuleService = require('../module-service');
-const moduleService = new ModuleService();
+const ModuleData = require('../../../server/module-data');
+const ModuleService = require('../../../server/module-service');
+const moduleService = new ModuleService( new ModuleData() );
 
 /**
  * Will get the list of contacts
@@ -16,6 +17,13 @@ router.get('/contacts', (req, res) => {
  */
 router.post('/contacts', (req, res) => {
     res.json(moduleService.addContact(req.body));
+});
+
+/**
+ * Will update contact
+ */
+router.put('/contacts', (req, res) => {
+    res.json(moduleService.updateContact(req.body));
 });
 
 /**

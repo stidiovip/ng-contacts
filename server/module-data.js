@@ -6,17 +6,16 @@ const _ = require('lodash');
 class Contact {
 
     /**
-     * The constructor
-     *
-     * @param {number} id : the identifier
-     * @param {string} address : the address
-     * @param {string} phone : the phone
+     * T
+     * @param data
      */
-    constructor ( id, name, address, phone ){
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
+    constructor ( data ){
+        this.id         = data.id || 0;
+        this.firstname  = data.firstname || "";
+        this.lastname   = data.lastname || "";
+        this.address    = data.address || "";
+        this.email      = data.email || "";
+        this.phone      = data.phone || "";
     }
 
 }
@@ -30,12 +29,13 @@ class ModuleData {
      * Default constructor
      */
     constructor (){
+
         this._contacts = [
-            new Contact(1, "Tidiane SIDIBE", "Nantes, France", "0000011111"),
-            new Contact(2, "Jean-Brice BOUTIN", "Paris, France",  "0000011112"),
-            new Contact(3, "Marianne POURRE", "Rennes, France", "0000011113")
+            new Contact({id : 1, firstname: "Tidiane", lastname: "Sidibé", address : "Nantes, France", email : "stidio@yahoo.com", phone: "0000011111"}),
+            new Contact({id : 2, firstname: "Jean-Brice", lastname: "Boutin", address : "Nantes, France", email : "jb1@yahoo.com", phone: "0000011112"}),
         ];
 
+        // for counting the next contact id
         this.max = this._contacts.length;
     }
 
@@ -52,9 +52,9 @@ class ModuleData {
      * @param {Contact} contact
      */
     addContact (contact){
-        let addedContact = new Contact(++this.max, contact.name, contact.address, contact.phone);
-        this._contacts.push( addedContact );
-        return addedContact;
+        contact.id = ++this.max;
+        this._contacts.push( contact );
+        return contact;
     }
 
     /**

@@ -1,0 +1,13 @@
+<div class="col-sm-4">
+  <h5> Details of {{ contact.firstname }} {{ contact.lastname | uppercase }}( #{{ contact.id }} )</h5>
+
+  <div class="card card-block">
+    <h5 class="card-title">Firstname : {{ contact.firstname }}</h5>
+    <h5 class="card-title">Lastname : {{ contact.lastname | uppercase }}</h5>
+    <h5 class="card-title">Address : {{ contact.address }}</h5>
+    <h5 class="card-title">Email : {{ contact.email }}</h5>
+    <h5 class="card-title">Phone : {{ contact.phone }}</h5>
+  </div>
+
+  <button class="btn btn-sm btn-default" (click)="close()"> Fermer </button>
+</div>
