@@ -2,6 +2,10 @@
 
 A simple contacts manager with Angular 2
 
+# Requirements
+- NodeJS (>= 6.9)
+- @angular/cli
+
 # Installation
 ```
 npm install
